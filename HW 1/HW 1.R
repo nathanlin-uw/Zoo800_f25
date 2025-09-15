@@ -1,5 +1,7 @@
 # Quantitative Methods in Ecology and Evolution, Homework 1
 # Nathan Lin
+# September 8, 2025
+# Modeling and visualizing logistic population growth
 
 # Get working directory sorted out
 setwd("~/Zoo800_f25/HW 1/")
@@ -61,6 +63,8 @@ plot(x=only_till_2000, y=calculate_Nt(K, N0, r, only_till_2000), type="l",
 lines(x=only_till_2000, y=calculate_Nt(K, N0, r * 2, only_till_2000), 
       col="gold", lwd=3)
 legend(x="bottomright", fill=c("blue", "gold"), legend=c("r = 0.0005", "r = 0.0010"))
+# Can also use lty parameter (1 for solid, 2 for dashed)
+
 
 # End the process
 dev.off()
