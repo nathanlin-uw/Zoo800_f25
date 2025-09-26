@@ -16,6 +16,10 @@ temp_F <- (temp_C * (9/5)) + 32
 # Question 1.3 - Printing fiasco (I was missing f strings on python)
 print(glue("The water temperature is {temp_C} °C ({temp_F} °F)"))
   # print(paste("The water temperature is ", temp_C, " °C (", temp_F, " °F)", sep=""))
+    # paste works nicely for saving files
+  # cat(yada yada) works as well too
+  # could've done expression(degrees) to have that degree symbol -- this is useful for things like 
+    # greek letters delta/Sigma or subscripting N[0] like with expression(Delta == 1 (i.e., N[0]))
 
 # Question 2.1 - Make species counts (it's a named vector, name=value)
 species_counts <- c(Bluegill = 12, Bass = 7, Sunfish = 21, Carp = 3)
