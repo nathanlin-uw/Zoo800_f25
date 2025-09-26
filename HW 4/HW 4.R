@@ -216,10 +216,18 @@ continuous_to_categorical_by_species_boxplot <- function(dataframe, species_vect
 }
 
 # Run it with penguins
-size_categories_by_species_penguins <- continuous_to_categorical_by_species_boxplot(dataframe=penguins,
+size_categories_by_species_penguins_boxplot <- continuous_to_categorical_by_species_boxplot(dataframe=penguins,
                                                                             species_vector=c("Adelie", "Gentoo", "Chinstrap"),
                                                                             species_specific_breakpoints=list(c(3450, 3900), c(4800, 5350), c(3583, 3833)),
                                                                             category_labels=c("small", "medium", "large"))
+
+# Another way to do it with ggplot thanks to Elizabeth: (requires ggplot2)
+alt_boxplot <- ggplot(size_categories_by_species_penguins, aes(x = body_mass_sml_by_species, y = body_mass_g, fill = species)) + 
+  geom_boxplot() + 
+  labs(title = "Boxplot of Penguin Sizes by Species", x = "Body Size Category", y = "Body Mass (g)") +
+  theme_classic() +
+  scale_x_discrete(labels = c("large" = "Large", "medium" = "Medium", "small" = "Small"))
+
 
 # Question 5 - the most hands-off version possible with no breakpoint specifications
 
@@ -289,3 +297,9 @@ boxplot(body_mass_g ~ species + assigned_category,
         cex.lab=1, cex.axis=1, xlab="Body size categories", ylab="Body mass (g)")
 legend("topright", fill=c("blue", "green", "yellow"), 
        legend=c("Adelie", "Gentoo", "Chinstrap"))
+
+# ggplot way thanks to Elizabeth
+second_boxplot_ggplot <- ggplot(with_5_categories, aes(x = assigned_category, y = body_mass_g, fill = species)) + 
+  geom_boxplot() + 
+  labs(title = "Boxplot of Penguin Sizes by Species and Size Categories", x = "Body Size Category", y = "Body Mass (g)") +
+  theme_classic()
