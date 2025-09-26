@@ -1,5 +1,5 @@
 # Quantitative Methods in Ecology and Evolution, Homework 4
-# Nathan Lin 
+# Nathan Lin, Kristine Schoenecker, and Elizabeth Braatz
 # September 25, 2025
 # Coding in R 2: functions
 
