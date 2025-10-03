@@ -1,0 +1,13 @@
+"Species","Length_group","n"
+"Smallmouth Bass","(0,200]",3
+"Smallmouth Bass","(200,400]",4
+"Smallmouth Bass","(400,600]",7
+"Smallmouth Bass","(600,Inf]",3
+"Walleye","(0,200]",1
+"Walleye","(200,400]",9
+"Walleye","(400,600]",13
+"Walleye","(600,Inf]",4
+"Yellow Perch","(0,200]",1
+"Yellow Perch","(200,400]",8
+"Yellow Perch","(400,600]",3
+"Yellow Perch","(600,Inf]",4
