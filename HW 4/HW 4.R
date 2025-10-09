@@ -24,6 +24,10 @@ continuous_to_binary <- function(values, breakpoint, first_label, second_label) 
   return(labels_subbed)
 }
 
+# Notes: you can nest in ifelse?? with that false case
+  # You can also use casewhen for more breakpoints??
+
+
 # Question 1b - small and large penguins
 # Just take a look at penguins dataset first, width=Inf prevents truncation
 print(penguins, n=3, width=Inf)
@@ -73,6 +77,25 @@ continuous_to_categorical <- function(values, breakpoints, category_labels) {
 continuous_to_categorical(c(1:10), breakpoints=c(2, 4, 6, 8), category_labels=c("below 2", "below 4", "below 6", "below 8", "above 8"))
 # Second test with NA things
 continuous_to_categorical(c(2, NA, 3), breakpoints=c(2.5), category_labels=c("small", "large"))
+
+
+##### Something else we can do #####
+
+convert_to_discrete <- function(data, breakpoints, labels) {
+  # This one takes the actual dataframe first
+  require(dplyr)
+  categorized_data <- data %>% 
+    mutate(
+      # Creates multiple if-else statements and evaluates them sequentially, if no cases match there's a final default value
+      discrete_variable = case_when(
+        body_mass_g <= breaks[1] ~ labels[1],
+        body_mass_g <= breaks[2] ~ labels[2],
+        .default = labels[3]
+      )
+    )
+  return(categorized_data <- discrete_variable)
+}
+
 
 # Question 2b - small, medium, and large penguins
 # Look at a range again
