@@ -39,6 +39,14 @@ hellbenders_df <- data.frame(year=0:10, pop_size=ten_year_hellbenders)
 hellbenders_10_year_graph <- ggplot(data=hellbenders_df, mapping=aes(x=year, y=pop_size)) + geom_line()
 hellbenders_10_year_graph
 
+
+# We can make a matrix to store generated values then set initial pop size for each random one
+# N_matrix <- matrix(NA, nrow=years+1, ncol=length(r_values))
+# N_matrix[1, ] <- N0
+# for (t in 1:years) {
+  # N_random[t+1, ] <- N_random[t, ] + r_values * N_random[t, ] * (1 - N_random[t, ] / K)
+# }
+
 ### Objective 2
 # Question 2a - simulate 50 different times using normal distribution of r (mean=0.2, sd=0.03)
 different_r_values <- rnorm(50, mean=0.2, sd=0.03)
@@ -47,6 +55,9 @@ for (i in 1:50) {
   one_simulation <- sim_log_growth(10, hellbender_N0, different_r_values[i], hellbender_K)
   simulate_50_times[[i]] <- one_simulation
 }
+
+# Could make a big matrix with matrix(NA, nrow = how_many_years + 1, ncol = 50) and populate that with sim results (update matrix[t+1, ] with values in matrix[t, ])
+# Then instead of pivot longer we can mutate to get the year column then use dplyr's gather(key = "simulation", value = "population size", -year)
 
 # We're going to have column names for each extra simulation
 extra_sim_names <- paste("extra_sim_", 1:50, sep="")
@@ -77,6 +88,7 @@ hellbenders_possible_time_series
 ### Objective 3
 # Question 3a - horizontal dashed line for target size
 hellbenders_possible_time_series + geom_hline(yintercept=800, linetype="dashed")
+  # color="purple", size=1
 
 # Question 3b - histogram for 25 years from now
 # Just making a function since I like organizing my work into those
